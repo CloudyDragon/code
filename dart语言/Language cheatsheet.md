@@ -185,3 +185,153 @@ If the type of parameter is non-nullable, then you must either provide a default
 the parameter as required(as shown in the constructor section).
 
 A function can’t have both optional positional and optional named parameters.
+
+### Exceptions
+Dart cide cab throw and catch exceptions. n constrast to Java, all of Dart's excetions are unchecked exceptions. Methods don't
+declare which exceptions they might throw. and you aren't required to catch any exceptions.
+
+Dart provides Exception and Error types. but you're allowed to throw any non-null object:
+```dart
+throw Exception('Something bad happend.');
+throw 'Waaaaah!';
+```
+Use the try,on,and catch keywords when handing execptions;
+```dart
+try {
+  breadMoreLlams();
+} on OutOfLlamasException {
+  buyMoreLlamas();
+} on Exception catch (e) {
+  // Anything else that is an exception
+  print('Unknown exception: $e');
+} catch(e) {
+  // No specified type, handles all
+  print('Something really unknown:$e');
+}
+```
+The try keyword workds as it does in most other languages. Use the on keyword to filter for specific exceptions by type, and the catch keyword to get a reference to the exception object.
+If you can't competely handle the exception. use the `rethrow` keyword to propagate the exception:
+```dart
+try {
+  breadMoreLlamas();
+} catch (e) }{
+  print('I was just trying to breed llamas!');
+  rethrow;
+}
+
+
+```
+To excecute code whether or not an exception is thrown, use finally:
+```dart
+try {
+  breadMoreLlamas();
+} catch (e) {
+
+} finally {
+  cleanLlamaStatlls();
+}
+```
+
+### Using this in a constructor
+Dart provides a handy shortcut for assigning values to properties in a constructor: use this.propertyName when declaring the constructor:
+```dart
+class MyColor {
+  int red;
+  int green;
+  int blue;
+  MyColor(this.red, this.green, this.blue);
+}
+final Color = MyColor(80, 80, 128);
+```
+This technique works for named parameters, too. Property names become the names of the parameters:
+```dart
+class MyColor {
+  MyColor({ required this.red, required this.green, required this.blue });
+}
+final color = MyColor(red: 80, green: 80, blue: 89);
+```
+In the preceding code, red, green, and blue are marked as required because these int values can't be null. If you add default values. your can omit required:
+```dart
+MyColor([this.red = 0, this.green = 0, this.blue = 0]);
+// or
+MyColor({this.red = 0, this.green = 0, this.blue = 0});
+```
+
+### Initializer lists
+Somethimes when you implement a constructor. you need to do some setup before the constructor body executes. For example, final fieleds must have values before the constructor body executes. Do this work in an initializer list. which goes between the constructor's signature and its body:
+```dart
+Point.fromJson(Map<String, double> json): x = json['x']!, y = json['y']! {
+  print('In Point.fromJson(): ($x, $y)');
+}
+```
+The initilalizer list is also a handy place to put asserts, which run only during development:
+```dart
+NonNegativePoint(this.x, this.y)
+  : assert(x >= 0),
+  : assert(y >= 0) {
+    print('I just made a NonNegativePoint: ($x, $y)');
+  }
+```
+
+### Named constructors
+To allow classes to have multiple constructors, Dart supports named constructors:
+```dart
+class Point {
+  double x, y;
+  Point(this.x, this.y);
+  Point.origin()
+    : x = 0,
+      y = 0;
+}
+```
+To use a named constructor, invoke it using its full name:
+```dart
+final myPoint = Point.origin();
+```
+
+### Factory constructors
+Dart supports factory constructors, which can return subtypes or even null. To create a factory constructor, use the factory keyword:
+```dart
+class Square extends Shape{}
+class Circle extends Shape{}
+
+class Shape{
+  Shape();
+  factory Shape.fromTypeName(String typeName) {
+    if (typeName == 'square') return Square();
+    if (typeName == 'circle') return Circle();
+    throw ArgumentError('Unrecognized $typeName');
+  }
+}
+```
+
+### Redirecting constructor
+Sometimes a constructor's only purpose is to redirect to another constructor in the same class. A redirecting constructors's body is empty, with the constructor call appearing after a colon(:).
+```dart
+class Automobile {
+  String make;
+  String model;
+  int mpg;
+  // The main constructor for this class.
+  Automobile(this.make, this.model, this.mpg);
+
+  // Delegates to the main constructor.
+  Automobile.hybrid(String make, String model) : this(make, model, 60);
+
+  // Delegates to a named constructor
+  Automobile.fancyHybrid() : this.hybrid('Futurecar', 'Mark 2');
+}
+```
+
+### Const constructors
+If you class produces objects that never change, you can make these objects complie-time constants. To do this, define a const
+constructor and make sure that all instance variable are final.
+```dart
+class ImmutablePoint {
+  static const ImmutablePoint origin = ImmutablePoint(0, 0);
+  final int x;
+  final int y;
+
+  const ImmutablePoint(this.x, this.y);
+}
+```
