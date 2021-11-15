@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模板引擎</title>
+</head>
+<body>
+  <script>
+    let template = '<h1>可能你对{{a}}有什么{{b}}！------{{c}}</h1>'
+    let data = {
+      a: '强',
+      b: '误解',
+      c: '哇咔咔'
+    }
+
+    function render(templatStr, data) {
+      return template.replace(/\{\{(\w+)\}\}/g, function (findStr, $1) {
+        return data[$1];
+      })
+    }
+    console.log(render(template, data))
+  </script>
+</body>
+</html>
