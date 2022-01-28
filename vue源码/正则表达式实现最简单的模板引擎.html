@@ -8,19 +8,19 @@
 </head>
 <body>
   <script>
-    let template = '<h1>可能你对{{a}}有什么{{b}}！------{{c}}</h1>'
+    let template = '<h1>可能你对{{a}}有什么{{b}}！</h1>'
     let data = {
       a: '强',
       b: '误解',
       c: '哇咔咔'
     }
 
-    function render(templatStr, data) {
+    function h(templatStr, data) {
       return template.replace(/\{\{(\w+)\}\}/g, function (findStr, $1) {
         return data[$1];
       })
     }
-    console.log(render(template, data))
+    console.log(h(template, data))
   </script>
 </body>
 </html>
