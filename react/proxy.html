@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proxy</title>
+  </head>
+  <body>
+    <script>
+let obj = {
+  // a: {
+  //   b: {
+  //     c: {
+  //       d: {
+  //         e: [{
+  //           f: [{
+  //             g: 'abcdefg'
+  //           }]
+  //         }]
+  //       }
+  //     }
+  //   }
+  // }
+  a: 1,
+  c: 233,
+};
+
+let activeEffect;
+const bucket = new WeakMap();
+
+const p = new Proxy(obj, {
+  get(target, prototype, receiver) {
+    if (!activeEffect) return target[prototype];
+    let depsMap = bucket.get(target);
+    if (!depsMap) {
+      bucket.set(target, (depsMap = new Map()));
+    }
+    let deps = depsMap.get(prototype);
+    if (!deps) {
+      depsMap.set(prototype, (deps = new Set()));
+    }
+    deps.add(activeEffect);
+    activeEffect.deps.push(deps); // 存储依赖的set
+    return target[prototype];
+  },
+  set(target, prototype, newValue, receiver) {
+    target[prototype] = newValue;
+    let m = bucket.get(target);
+    let set = new Set(m.get(prototype)); // 重新new set避免，fn函数里执行了删除set里元素导致无限循环的问题。
+    set && set.forEach((fn) => {
+      if (activeEffect != fn){ // 避免 p.a = p.a + 1的get和set同时触发导致死循环的问题
+
+        fn()
+      }
+    }); // 改变变量后执行对应的副作用函数
+  },
+});
+
+let effectStack = []
+function effect(fn) {
+  let effectFn = () => {
+    for (let i = 0; i < effectFn.deps.length; i++) {
+      // 从记录依赖的set移除副作用函数
+      let v = effectFn.deps[i];
+      v.delete(fn);
+    }
+    effectFn.deps.length = 0;
+    activeEffect = effectFn; // 存储副作用函数的引用，相比较之前就可以不关心函数的名称了
+    effectStack.push(effectFn)
+    fn();
+    effectStack.pop()
+    activeEffect = effectStack[effectStack.length - 1] // 嵌套情况，activeEffect的值会被覆盖，所以执行完毕fn后要重置为之前的值
+  };
+  effectFn.deps = [];
+  effectFn();
+}
+
+effect(() => {
+  console.log("effect 1");
+  effect(() => {
+    console.log("effect 2");
+    let temp = p.c
+  });
+  let temp = p.a
+});
+p.a = 233
+    </script>
+  </body>
+</html>

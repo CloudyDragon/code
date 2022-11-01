@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>queue</title>
+  </head>
+  <body>
+<script>
+
+function foo(num) {
+  console.log(num)
+}
+
+// foo(1) // 优先级1
+// foo(3) // 优先级3
+// foo(2) // 优先级2
+
+// // 打印结果 1 2 3
+
+async function bar() {
+  async function sleep() {
+    await new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(true)
+      }, 1000)
+    })
+  }
+
+  let queue = {
+    fn: foo.bind(null, 1),
+    next: {
+      fn: foo.bind(null, 3),
+      next: null
+    }
+  }
+  queue.next.next = queue
+
+  setTimeout(() => {
+    let next = queue.next
+    queue.next = {
+      fn: foo.bind(null, 2),
+      next
+    }
+  }, 500)
+
+  let temp = queue
+  do {
+    let fn = temp.fn
+    fn()
+    await sleep()
+    temp = temp.next
+  } while (temp !== queue)
+}
+bar()
+</script>
+  </body>
+</html>

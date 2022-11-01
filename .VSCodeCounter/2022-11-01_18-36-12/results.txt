@@ -1,0 +1,92 @@
+Date : 2022-11-01 18:36:12
+Directory : /Users/dragon/workspace/node/work/git_study
+Total : 60 files,  11952 codes, 1315 comments, 1220 blanks, all 14487 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| TypeScript |         26 |      7,358 |        916 |        667 |      8,941 |
+| JavaScript |          2 |      3,061 |        379 |        310 |      3,750 |
+| Markdown   |         14 |        871 |          0 |        148 |      1,019 |
+| HTML       |          6 |        413 |          0 |         54 |        467 |
+| Rust       |         12 |        249 |         20 |         41 |        310 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                        | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                           |         60 |     11,952 |      1,315 |      1,220 |     14,487 |
+| dart语言                                                                      |          3 |        457 |          0 |         68 |        525 |
+| react                                                                       |          7 |      3,495 |        379 |        356 |      4,230 |
+| rust                                                                        |         13 |        249 |         20 |         42 |        311 |
+| vue源码                                                                       |         36 |      7,750 |        916 |        753 |      9,419 |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                    | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Users/dragon/workspace/node/work/git_study/dart语言/Language cheatsheet.md   | Markdown   |        296 |          0 |         42 |        338 |
+| /Users/dragon/workspace/node/work/git_study/dart语言/samples.md               | Markdown   |        145 |          0 |         22 |        167 |
+| /Users/dragon/workspace/node/work/git_study/dart语言/where.md                 | Markdown   |         16 |          0 |          4 |         20 |
+| /Users/dragon/workspace/node/work/git_study/react/ReactFiberHooks.old.js    | JavaScript |      3,044 |        365 |        306 |      3,715 |
+| /Users/dragon/workspace/node/work/git_study/react/Scheduler.js              | JavaScript |         17 |         14 |          4 |         35 |
+| /Users/dragon/workspace/node/work/git_study/react/hook.md                   | Markdown   |        119 |          0 |          6 |        125 |
+| /Users/dragon/workspace/node/work/git_study/react/hooks.html                | HTML       |         84 |          0 |         16 |        100 |
+| /Users/dragon/workspace/node/work/git_study/react/parseTemplate.html        | HTML       |         94 |          0 |         10 |        104 |
+| /Users/dragon/workspace/node/work/git_study/react/proxy.html                | HTML       |         85 |          0 |          6 |         91 |
+| /Users/dragon/workspace/node/work/git_study/react/queue.html                | HTML       |         52 |          0 |          8 |         60 |
+| /Users/dragon/workspace/node/work/git_study/rust/color.rs                   | Rust       |         20 |          0 |          0 |         20 |
+| /Users/dragon/workspace/node/work/git_study/rust/guess.rs                   | Rust       |         16 |          1 |          3 |         20 |
+| /Users/dragon/workspace/node/work/git_study/rust/hanota.rs                  | Rust       |         29 |          0 |          3 |         32 |
+| /Users/dragon/workspace/node/work/git_study/rust/linked_list.rs             | Rust       |         35 |         10 |         10 |         55 |
+| /Users/dragon/workspace/node/work/git_study/rust/main.rs                    | Rust       |         23 |          0 |          3 |         26 |
+| /Users/dragon/workspace/node/work/git_study/rust/maze.rs                    | Rust       |         53 |          0 |          7 |         60 |
+| /Users/dragon/workspace/node/work/git_study/rust/quick_sort.rs              | Rust       |          8 |          1 |          2 |         11 |
+| /Users/dragon/workspace/node/work/git_study/rust/rust.md                    | Markdown   |          0 |          0 |          1 |          1 |
+| /Users/dragon/workspace/node/work/git_study/rust/split_whitespace.rs        | Rust       |         11 |          0 |          2 |         13 |
+| /Users/dragon/workspace/node/work/git_study/rust/str_slice.rs               | Rust       |         15 |          3 |          4 |         22 |
+| /Users/dragon/workspace/node/work/git_study/rust/str_split.rs               | Rust       |         11 |          5 |          1 |         17 |
+| /Users/dragon/workspace/node/work/git_study/rust/str_to_char.rs             | Rust       |         11 |          0 |          0 |         11 |
+| /Users/dragon/workspace/node/work/git_study/rust/test.rs                    | Rust       |         17 |          0 |          6 |         23 |
+| /Users/dragon/workspace/node/work/git_study/test.md                         | Markdown   |          1 |          0 |          1 |          2 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/JSX vs template.md        | Markdown   |         11 |          0 |          6 |         17 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/Plugin.md                 | Markdown   |         32 |          0 |          1 |         33 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/ast.ts                    | TypeScript |        662 |         54 |         97 |        813 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/babelUtils.ts             | TypeScript |        301 |         74 |         50 |        425 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/codegen.ts                | TypeScript |        898 |         40 |         62 |      1,000 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/compile.ts                | TypeScript |        106 |          4 |          9 |        119 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/errors.ts                 | TypeScript |        154 |         12 |         17 |        183 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/getter和setter.md          | Markdown   |         18 |          0 |          0 |         18 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/hoistStatic.ts            | TypeScript |        315 |         27 |         21 |        363 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/index.ts                  | TypeScript |         64 |          2 |          5 |         71 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/noopDirectiveTransform.ts | TypeScript |          2 |          0 |          2 |          4 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/observe.html              | HTML       |         73 |          0 |         13 |         86 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/options.ts                | TypeScript |         90 |        202 |         10 |        302 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/parse.ts                  | TypeScript |      1,003 |         71 |        108 |      1,182 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/runtimeHelpers.ts         | TypeScript |         87 |          2 |          3 |         92 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/transform.ts              | TypeScript |        434 |         45 |         25 |        504 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/transformElement.ts       | TypeScript |        778 |        107 |         59 |        944 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/transformExpression.ts    | TypeScript |        286 |         70 |         19 |        375 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/transformSlotOutlet.ts    | TypeScript |        101 |          0 |         13 |        114 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/transformText.ts          | TypeScript |         93 |         22 |          5 |        120 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/utils.ts                  | TypeScript |        473 |         30 |         37 |        540 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/vBind.ts                  | TypeScript |         64 |          4 |          8 |         76 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/vFor.ts                   | TypeScript |        394 |         26 |         34 |        454 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/vIf.ts                    | TypeScript |        311 |         30 |         18 |        359 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/vMemo.ts                  | TypeScript |         37 |          1 |          3 |         41 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/vModel.ts                 | TypeScript |        127 |          9 |         13 |        149 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/vOn.ts                    | TypeScript |        136 |         34 |         12 |        182 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/vOnce.ts                  | TypeScript |         22 |          0 |          3 |         25 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/vSlot.ts                  | TypeScript |        370 |         40 |         27 |        437 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/validateExpression.ts     | TypeScript |         50 |         10 |          7 |         67 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/vue-router.md             | Markdown   |         49 |          0 |         10 |         59 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/vuex mutations actions.md | Markdown   |         28 |          0 |         13 |         41 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/依赖追踪.md                   | Markdown   |         37 |          0 |          8 |         45 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/响应性和Render Function.md    | Markdown   |         46 |          0 |         22 |         68 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/正则表达式实现最简单的模板引擎.html      | HTML       |         25 |          0 |          1 |         26 |
+| /Users/dragon/workspace/node/work/git_study/vue源码/迷你观察者.md                  | Markdown   |         73 |          0 |         12 |         85 |
+| Total                                                                       |            |     11,952 |      1,315 |      1,220 |     14,487 |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+

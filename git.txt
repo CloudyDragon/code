@@ -1,0 +1,72 @@
+$ git config --global user.name 'your name'
+$ git config --global user.email 'you email'
+
+# 列举所有配置
+$ git config --list
+user.email=your email
+user.name=your name
+
+# 查看单个配置后
+$ git config user.name
+your name
+
+$ git status
+On branch master
+No commits yet
+nothing to commit (create/copy files and use "git add" to track)
+
+# 一行显示提交历史信息
+$ git log --pretty=oneline
+6444834e8debf9e407c26ee29ae5fb42b9b99511 (HEAD -> master) update README.md
+7aca89161b709f1f16f637703020815c0afb14ea add
+
+# 查看简要统计信息
+$ git log --stat
+commit 6444834e8debf9e407c26ee29ae5fb42b9b99511 (HEAD -> master)
+Author: xxx <xxx@gmail.com>
+Date:   Mon Mar 30 15:19:28 2020 +0800
+
+    update README.md
+
+ README.md | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+commit 7aca89161b709f1f16f637703020815c0afb14ea
+Author: xxx <xxx@gmail.com>
+Date:   Mon Mar 30 15:13:38 2020 +0800
+
+    add
+
+ README.md | 3 +++
+ 1 file changed, 3 insertions(+)
+最后一个比较有意思的地方是--graph参数，它会使用ASCII字符形式的简单图来显示Git分支以及合并历史：
+
+# 图形显示提交历史
+$ git log --graph
+* commit 6444834e8debf9e407c26ee29ae5fb42b9b99511 (HEAD -> master)
+| Author: xxx <xxx@gmail.com>
+| Date:   Mon Mar 30 15:19:28 2020 +0800
+|
+|     update README.md
+|
+* commit 7aca89161b709f1f16f637703020815c0afb14ea
+  Author: xxx <xxx@gmail.com>
+  Date:   Mon Mar 30 15:13:38 2020 +0800
+
+      add
+
+# 只显示最近一次的提交
+$ git log -1
+# 只显示作者为xxx的提交
+$ git log --author=wangtunan
+# 只显示2020年3月31日之前的提交
+$ git log --before='2020-03-31'
+# 错误提交了README.md文件
+$ git add README.md
+# 查看文件状态
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        deleted:    README.md

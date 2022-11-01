@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div class="view"></div>
+
+    <script>
+      const setItem = localStorage.setItem;
+      localStorage.setItem = function (name, value) {
+        setItem.apply(this, arguments);
+        var event = new Event("setItem");
+        event.key = name;
+        event.value = value;
+        window.dispatchEvent(event);
+      };
+      // 页面使用
+      window.addEventListener("setItem", function (e) {
+        document.querySelector(".view").innerText = `${e.key}： ${e.value}`;
+      });
+
+      let template = `<div>
+        <div>{{name}}</div>
+        <div>{{option.a}}
+          <div>{{option.b.c}}</div>  
+        </div>
+      </div>
+    `;
+
+      let data = {
+        name: "测试",
+        option: {
+          a: 233,
+          b: {
+            c: "QAQ",
+          },
+        },
+      };
+
+      function getData(prototype, data) {
+        if (!prototype) return "";
+        let arr = prototype.split(".");
+        let temp = data[arr[0]];
+        for (let i = 1; i < arr.length; i++) {
+          temp = temp[arr[i]];
+        }
+        return temp;
+      }
+
+      function render(s, data) {
+        let html = "";
+        for (let i = 0; i < s.length; i++) {
+          if (s[i].type === "string") {
+            html += s[i].value;
+          } else if (s[i].type === "data") {
+            html += getData(s[i].value, data);
+          }
+        }
+        document.getElementById("root").innerHTML = html;
+      }
+
+      function parseTemplate(str) {
+        let arr = [];
+        let left = 0;
+        let right = 0;
+        let ctrl = false;
+        let s = "";
+        for (let i = 0; i < str.length; i++) {
+          if (str[i] === "{" && str[i + 1] === "{") {
+            left = i;
+            ctrl = true;
+            arr.push({ type: "string", value: s });
+          }
+          if (!ctrl && str[i] != "}" && str[i + 1] != "}") {
+            s += str[i];
+          }
+          if (ctrl && str[i] !== "}" && str[i + 1] !== "}") {
+            right++;
+          } else if (ctrl && str[i] === "}" && str[i + 1] === "}") {
+            ctrl = false;
+            arr.push({
+              type: "data",
+              value: str.substring(left + 2, left + right + 1),
+            });
+            right = 0;
+          }
+        }
+        arr.push({ type: "string", value: s });
+        console.log(arr);
+        return arr;
+      }
+
+
+  
+      render(parseTemplate(template), data);
+    </script>
+  </body>
+</html>
